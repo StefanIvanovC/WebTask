@@ -1,8 +1,8 @@
-﻿using EmployeesTasks.Models;
+﻿using EmployeeTask.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace EmployeesTasks.Controllers
+namespace EmployeeTask.Controllers
 {
     public class HomeController : Controller
     {
@@ -14,6 +14,11 @@ namespace EmployeesTasks.Controllers
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Privacy()
         {
             return View();
         }
