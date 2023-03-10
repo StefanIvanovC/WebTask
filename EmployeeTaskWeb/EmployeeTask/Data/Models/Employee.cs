@@ -4,6 +4,12 @@ namespace EmployeeTask.Data.Models
 {
     public class Employee
     {
+        public Employee()
+        {
+            this.Tasks = new HashSet<Task>();
+            this.DateOfBirth = DateTime.MinValue;
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -14,5 +20,7 @@ namespace EmployeeTask.Data.Models
         public DateTime DateOfBirth { get; set; }
 
         public int MontlySalary { get; set; }
+
+        public virtual ICollection<Task> Tasks { get; set; }
     }
 }
