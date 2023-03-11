@@ -1,6 +1,7 @@
 ﻿using EmployeeTask.Data;
 using EmployeeTask.Data.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeTask.Controllers
 {
@@ -16,7 +17,7 @@ namespace EmployeeTask.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Employee> employeeList = dbContext.Employees;
+            IEnumerable<Employee> employeeList = dbContext.Employees.Include(e => e.Tasks).ToList();
             return View(employeeList);
         }
 
@@ -99,6 +100,17 @@ namespace EmployeeTask.Controllers
             dbContext.SaveChanges();
             TempData["employee"] = "Employee is deleted successfully!";
             return RedirectToAction("Index");
+        }
+
+        public IActionResult TopFive()
+        {
+            var topFiveEmployeeList = dbContext.Employees
+                .Include(e => e.Tasks)
+                .OrderByDescending(e => e.Tasks.Count(t => t.IsCompleted && t.DueDate >= DateTime.Now.AddMonths(-1)))
+                .Take(5)
+                .ToList();
+
+            return View(topFiveEmployeeList);
         }
     }
 }

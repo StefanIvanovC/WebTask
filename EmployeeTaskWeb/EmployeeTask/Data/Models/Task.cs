@@ -11,12 +11,12 @@ namespace EmployeeTask.Data.Models
 
         public string Description { get; set; }
 
-        public string Assignee { get; set; }
-
         public DateTime DueDate { get; set; }
 
-        public int EmployeeId { get; set; }
+        public int AssignedEmployeeId { get; set; }
 
-        public virtual Employee Employee { get; set; }
+        public virtual Employee AssignedEmployee { get; set; }
+
+        public bool IsCompleted { get; set; }
     }
 }

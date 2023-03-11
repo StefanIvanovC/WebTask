@@ -1,6 +1,6 @@
 ﻿@model EmployeeTask.Data.Models.Employee
 @{
-    ViewData["Title"] = "Create new employee";
+    ViewData["Title"] = "Create employee";
 }
 <h1>@ViewData["Title"]</h1>
 <form method="post" class="border" asp-action="Create">
@@ -18,6 +18,11 @@
             <span asp-validation-for="PhoneNumber" class="text-danger"></span>
         </div>
         <div class="md-3">
+            <label asp-for="DateOfBirth" class="control-label"></label>
+            <input asp-for="DateOfBirth" class="form-control" type="date" />
+            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+        </div>
+        <div class="md-3">
             <label asp-for="MontlySalary"></label>
             <input asp-for="MontlySalary" class="form-control" />
             <span asp-validation-for="MontlySalary" class="text-danger"></span>
@@ -33,4 +38,4 @@
     @{
         <partial name="_ValidationScriptsPartial" />
     }
-}
+    }

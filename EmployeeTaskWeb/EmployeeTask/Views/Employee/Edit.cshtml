@@ -22,12 +22,17 @@
             <input asp-for="MontlySalary" class="form-control" />
             <span asp-validation-for="MontlySalary" class="text-danger"></span>
         </div>
+        <div class="md-3">
+            <label asp-for="DateOfBirth" class="control-label"></label>
+            <input asp-for="DateOfBirth" class="form-control" type="date" />
+            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+        </div>
         <hr>
-        <button class=" btn btn-primary">Update</button>
+        <button class=" btn btn-primary"><b>Update</b></button>
     </div>
 </form>
 <br>
-<a asp-controller="Employee" asp-action="Index" class="btn btn-info">Back to employees</a>
+<a asp-controller="Employee" asp-action="Index" class="btn btn-info"><b>Back to employees</b></a>
 
 @section Scripts{
     @{

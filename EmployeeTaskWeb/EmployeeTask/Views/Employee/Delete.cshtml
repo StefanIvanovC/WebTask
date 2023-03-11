@@ -1,6 +1,6 @@
 ﻿@model EmployeeTask.Data.Models.Employee
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Delete employee";
 }
 <h1>@ViewData["Title"]</h1>
 <form method="post" class="border" asp-action="DeletePost">
@@ -20,11 +20,11 @@
             <input asp-for="MontlySalary" disabled class="form-control" />
         </div>
         <hr>
-        <button class=" btn btn-danger">Delete</button>
+        <button class=" btn btn-danger"><b>Delete</b></button>
     </div>
 </form>
 <br>
-<a asp-controller="Employee" asp-action="Index" class="btn btn-info">Back to employees</a>
+<a asp-controller="Employee" asp-action="Index" class="btn btn-info"><b>Back to employees</b></a>
 
 @section Scripts{
     @{

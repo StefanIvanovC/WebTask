@@ -10,5 +10,7 @@ namespace EmployeeTask.Data
         }
 
         public DbSet<Employee> Employees { get; set; }
+
+        public DbSet<EmployeeTask.Data.Models.Task> Task { get; set; }
     }
 }

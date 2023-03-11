@@ -1,8 +1,7 @@
 ﻿@model IEnumerable<EmployeeTask.Data.Models.Employee>
 @{
-    ViewData["Title"] = "Employees";
+    ViewData["Title"] = "Top five employees";
 }
-<partial name="_employeeNotification"></partial>
 <h1>@ViewData["Title"]</h1>
 <hr>
 <table class="table table-bordered table-striped">
@@ -24,7 +23,13 @@
                 Montly salary
             </th>
             <th>
-                Tasks
+                All tasks
+            </th>
+            <th>
+                Completed tasks
+            </th>
+            <th>
+                Completed tasks in the last month
             </th>
             <th>
                 Update
@@ -54,6 +59,12 @@
                     @employee.Tasks.Count()
                 </td>
                 <td>
+                    @employee.Tasks.Where(t => t.IsCompleted).Count()
+                </td>
+                <td>
+                    @employee.Tasks.Where(t => t.IsCompleted && t.DueDate >= DateTime.Now.AddMonths(-1)).Count()
+                </td>
+                <td>
                     <a asp-controller="Employee" asp-action="Edit" asp-route-id="@employee.Id" class="btn btn-secondary btn-sm"><b>Edit</b></a>
                     <a asp-controller="Employee" asp-action="Delete" asp-route-id="@employee.Id" class="btn btn-danger btn-sm"><b>Delete</b></a>
                 </td>
@@ -62,3 +73,4 @@
     </tbody>
 </table>
 <a asp-controller="Employee" asp-action="Create" class="btn btn-primary"><b>Create NEW employee</b></a>
+<a asp-controller="Task" asp-action="Task" class="btn btn-primary"><b>Create NEW task</b></a>
