@@ -1,0 +1,50 @@
+﻿@model TaskManager.ViewModels.StatisticsViewModel
+@{
+    ViewData["Title"] = "Statistics";
+}
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<h2>@ViewData["Title"]</h2>
+<p><b>Employees count: @Model.EmployeesCount</b></p>
+<p><b>Tasks count: @Model.TasksCount</b></p>
+<p><b>Teams count: @Model.TeamsCount</b></p>
+<p><b>Total salary of all emplyees: @Model.TotalSalary</b></p>
+<hr>
+<canvas id="myChart" width="200" height="200"></canvas>
+
+@section scripts {
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Employees', 'Tasks', 'Teams'],
+                datasets: [{
+                    label: 'Count',
+                    data: [@Model.EmployeesCount, @Model.TasksCount, @Model.TeamsCount],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+}
