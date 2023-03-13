@@ -50,12 +50,16 @@ namespace TaskManager.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.Teams = _context.Teams.ToList();
+
             return View(employee);
         }
 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,Email,PhoneNumber,DateOfBirth,MonthlySalary")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,Email,PhoneNumber,DateOfBirth,MonthlySalary,TeamId")] Employee employee)
         {
             if (id != employee.Id)
             {

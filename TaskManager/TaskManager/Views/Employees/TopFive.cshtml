@@ -65,8 +65,8 @@
                     @employee.Tasks.Where(t => t.IsCompleted && t.DueDate >= DateTime.Now.AddMonths(-1)).Count()
                 </td>
                 <td>
-                    <a asp-controller="Employee" asp-action="Edit" asp-route-id="@employee.Id" class="btn btn-secondary btn-sm"><b>Edit</b></a>
-                    <a asp-controller="Employee" asp-action="Delete" asp-route-id="@employee.Id" class="btn btn-danger btn-sm"><b>Delete</b></a>
+                    <a asp-controller="Employees" asp-action="Edit" asp-route-id="@employee.Id" class="btn btn-secondary btn-sm"><b>Edit</b></a>
+                    <a asp-controller="Employees" asp-action="Delete" asp-route-id="@employee.Id" class="btn btn-danger btn-sm"><b>Delete</b></a>
                 </td>
             </tr>
         }
